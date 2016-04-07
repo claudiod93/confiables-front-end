@@ -1,0 +1,33 @@
+<div class="modal-header">
+    <h2>Realizar Contrato</h2>
+</div>
+
+<div class="modal-body" ng-app="reliableApp" ng-controller="ContratomodalCtrl">
+    <form>
+        <div class="form-group">
+            <label for="name">Nombre del Servicio {{test}}</label>
+            <input type="text" id="name" class="form-control" ng-model="dataContratos.nombre"/>
+        </div>
+        <div class="form-group">
+            <label for="desc">Descripción del Servicio</label>
+            <textarea id="desc" class="form-control" ng-model="dataContratos.descripcion"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="valorServicio">Valor Servicio</label>
+            <input type="number" id="valorServicio" class="form-control" ng-model="dataContratos.valorServicio"/></input>
+        </div>
+        <div class="form-group">
+            <label for="fechaInicio">Fecha Inicio</label>
+            <input id="fechaInicio" class="form-control" type="date" ng-model="dataContratos.fechaInicio">
+        </div>
+        <div class="form-group">
+            <label for="fechaFin">Fecha Fin</label>
+            <input id="fechaFin" class="form-control" type="date" ng-model="dataContratos.fechaFin">
+        </div>
+        <div class="form-group">
+            <label for="clausulas">Clausuas</label>
+            <textarea id="clausulas" class="form-control" ng-model="dataContratos.clausulaTermino"></textarea>
+        </div>
+        <a class="btn btn-primary" role="button" ng-click="contratado()">Solicitar Contratación</a>
+    </form>
+</div>

@@ -1,0 +1,33 @@
+<section class="container" style="padding-bottom: 15px">
+    <form role="form">
+        <h3>Mejora tus búsquedas</h3>
+        <br>
+        <div class="form-group">
+            <input type="search" class="form-control" placeholder="¿Que buscas?">
+        </div>
+        <div class="form-group" >
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    Cateforia
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
+                    <li><a href="#">Gasfiteria</a></li>
+                    <li><a href="#">Medicina</a></li>
+                    <li><a href="#">Mecanica</a></li>
+                    <li><a href="#">Educación</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Calificación</label>
+            <div>
+                <rating ng-model="search.rate" max="5" readonly="false"></rating>
+            </div>
+        </div>
+
+        <div class="bottom-left">
+            <a role="button" href="#/search" class="btn btn-success" >Buscar Ahora!</a>
+        </div>
+    </form>
+</section>

@@ -1,0 +1,71 @@
+<div style="width: 50%; height: 800px; float: left; overflow: scroll">
+    <section class="container" style="max-width: 100%">
+        <div class="row">
+
+            <div class="col-sm-12 col-md-12" ng-repeat="person in sarchResult">
+                <div class="thumbnail">
+                    <div style="float: right; width: 170px; height: 170px; overflow: hidden;">
+                        <img ng-src="{{person.imagen}}" style="margin-right: 0px;">
+                    </div>
+                    <div>
+                        <h3>{{person.nombres}} {{person.apellidos}}</h3>
+                        <h4>{{person.datosLaborales.categoria}}</h4>
+                        <p>{{person.datosLaborales.descripcion}}</p>
+                        <label>Evaluación</label>
+                        <rating ng-model="search.rate" max="5" readonly="false"></rating>
+                        <br>
+                        <label>Variabilidad</label>
+                        <span>Alta</span>
+                        <br>
+                        <p class="btn btn-group">
+                            <a class="btn btn-primary" ng-click="isCollapsed = !isCollapsed" role="button">Contactar</a>
+                            <a class="btn btn-success" role="button" href="#/perfilTrabajador">Más </a>
+                        </p>
+
+                        <div collapse="isCollapsed">
+                            <form>
+                                <div class="form-group">
+                                    <label for="name">Nombre del Servicio {{test}}</label>
+                                    <input type="text" id="name" class="form-control" ng-model="dataContratos.nombre"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="desc">Descripción del Servicio</label>
+                                    <textarea id="desc" class="form-control" ng-model="dataContratos.descripcion"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="valorServicio">Valor Servicio</label>
+                                    <input type="number" id="valorServicio" class="form-control" ng-model="dataContratos.valorServicio"/></input>
+                                </div>
+                                <div class="form-group">
+                                    <label for="fechaInicio">Fecha Inicio</label>
+                                    <input id="fechaInicio" class="form-control" type="date" ng-model="dataContratos.fechaInicio">
+                                </div>
+                                <div class="form-group">
+                                    <label for="fechaFin">Fecha Fin</label>
+                                    <input id="fechaFin" class="form-control" type="date" ng-model="dataContratos.fechaFin">
+                                </div>
+                                <div class="form-group">
+                                    <label for="clausulas">Clausuas</label>
+                                    <textarea id="clausulas" class="form-control" ng-model="dataContratos.clausulaTermino"></textarea>
+                                </div>
+                                <a class="btn btn-primary" role="button" ng-click="realizarContrato()">Solicitar Contratación</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+</div>
+
+<div style="width: 50%; height: 800px; float: right;">
+    <gm-map options="{center: [-33.461521, -70.645523], zoom: 12, mapTypeId: google.maps.MapTypeId.ROADMAP}">
+        <gm-marker
+                ng-repeat="item in sarchResult" gm-address="{address:'Huerfanos 670, Santiago, Chile'}"
+                on-click="console.log(item.name + ': ' + marker.getPosition().lat() + ',' + marker.getPosition().lng())"
+                >
+        </gm-marker>
+    </gm-map>
+</div>

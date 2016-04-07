@@ -1,0 +1,36 @@
+{
+  "bestofweek": [
+    {
+      "id": "1",
+      "image": "images/perfil_1.jpg",
+      "name": "Carlos Herrera",
+      "category": "Mecanica y Automotriz",
+      "summary": "Dedicado hace 20 años al rubro automotriz con dos talleres en providencia",
+      "value": "5"
+    },
+    {
+      "id": "1",
+      "image": "images/perfil_2.jpg",
+      "name": "Juan Perez",
+      "category": "Medicina",
+      "summary": "Especialista en medicina general",
+      "value": "4"
+    },
+    {
+      "id": "1",
+      "image": "images/perfil_3.jpg",
+      "name": "Alejandro Puelles",
+      "category": "Informatica y Computación",
+      "summary": "Experto en soporte de sistemas operativos windows",
+      "value": "5"
+    },
+    {
+      "id": "1",
+      "image": "images/perfil_2.jpg",
+      "name": "Magneli Guerrero",
+      "category": "Educación",
+      "summary": "Profesor de educación fisica",
+      "value": "4"
+    }
+  ]
+}

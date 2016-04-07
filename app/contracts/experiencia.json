@@ -1,0 +1,12 @@
+{
+  "experiencia": [
+    {
+      "Empresa": "Banco de Chile",
+      "cargo": "analista",
+      "fehcaDesde": "456787",
+      "fechaHasta": "34567",
+      "actual": true,
+      "descripcion": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod"
+    }
+  ]
+}

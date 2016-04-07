@@ -1,0 +1,9 @@
+.DS_Store
+.idea/
+reports
+build
+bower_components/
+vendor
+.tmp/
+node_modules/
+dist

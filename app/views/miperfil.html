@@ -1,0 +1,273 @@
+<br>
+<section id="miPerfilPersonalSection" class="container-fluid" style="padding-bottom: 15px">
+    <form class="row">
+        <div class="col-md-3" align="center">
+            <h3>{{nombre}}</h3>
+            <img src="../images/claudio_perfil.jpg" class="avatar">
+            <br>
+
+            <h3>Análista
+                <small>Informatica y Computación</small>
+            </h3>
+            <br>
+
+            <label>Valoración      |</label>
+            <label>Variablidad</label>
+            <br>
+            <rating ng-model="rate" max="5" readonly="false"></rating>
+            <span>|     Alta</span>
+
+            <br>
+
+        </div>
+        <div class="col-md-9">
+
+            <tabset>
+                <tab heading="Datos Personales">
+                    <br>
+
+                    <div class="input-group">
+                        <span class="input-group-addon" id="sizing-addon1">@</span>
+                        <input ng-model="correoPersonal" class="form-control" placeholder="Correo"
+                               type="email">
+                    </div>
+                    <br>
+                    <input ng-model="codigoPais" class="form-control" placeholder="Código País">
+                    <br>
+                    <input ng-model="codigoArea" class="form-control" placeholder="Código de Área">
+                    <br>
+                    <input ng-model="numeroTelefonoPersonal" type="number" class="form-control"
+                           placeholder="Numero de telefono">
+                    <br>
+
+                    <select class="form-control">
+                        <option>Paises</option>
+                        <option>Chile</option>
+                        <option>Agentina</option>
+                    </select>
+                    <br>
+                    <select name="Cuidades" class="form-control">
+                        <option>Ciudades</option>
+                        <option value="Santiago">Chile</option>
+                        <option value="Arica">Argentina</option>
+                    </select>
+                    <br>
+
+                    <select name="Comunas" class="form-control">
+                        <option>Comunas</option>
+                        <option value="La florida">Chile</option>
+                        <option value="Puente Alto">Argentina</option>
+                    </select>
+                    <br>
+                    <input ng-model="direccionPersonal" type="text" class="form-control" placeholder="Dirección">
+                    <br>
+                    <input ng-model="numeroDireccionPersonal" type="number" class="form-control"
+                           placeholder="Numero Dirección">
+                    <br>
+                    <input ng-model="complemento" type="text" class="form-control" placeholder="Complemento">
+                    <br>
+                    <input ng-model="codigoPostal" type="number" class="form-control" placeholder="Código Postal">
+                    <br>
+                </tab>
+
+
+                <tab heading="Datos Laborales">
+                    <br>
+
+                    <div class="input-group">
+                        <span class="input-group-addon" id="icon-mail-laboral">@</span>
+                        <input class="form-control" placeholder="Correo Laboral" type="email" ng-model="datosLaborales.mail">
+                    </div>
+                    <br>
+                    <input class="form-control" placeholder="Código País" ng-model="datosLaborales.codPais">
+                    <br>
+                    <input class="form-control" placeholder="Código de Área" ng-model="datosLaborales.codCuidad">
+                    <br>
+                    <input type="number" class="form-control" placeholder="Numero de telefono" ng-model="datosLaborales.numero">
+                    <br>
+                    <label>Cuidad</label>
+                    <select name="Cuidades" class="form-control" ng-model="datosLaborales.codCuidad">
+                        <option ng-repeat="ciudad in comboCiudades" value="{{ciudad.nombre}}">{{ciudad.nombre}}</option>
+                    </select>
+                    <br>
+                    <label>Comuna</label>
+                    <select name="Comunas" class="form-control" ng-model="datosLaborales.comuna">
+                        <option ng-repeat="comuna in comboComunas" value="{{comuna.nombre}}">{{comuna.nombre}}</option>
+                    </select>
+                    <br>
+                    <label>Categoria</label>
+                    <select name="Categorias" class="form-control" ng-model="datosLaborales.categoria">
+                        <option ng-repeat="cateogria in combosCategoria" value="{{cateogria.nombre}}">{{cateogria.nombre}}</option>
+                    </select>
+
+                    <br>
+                    <input type="text" class="form-control" placeholder="Dirección" ng-model="datosLaborales.direccion">
+                    <br>
+                    <input type="number" class="form-control" placeholder="Numero Dirección" ng-model="datosLaborales.numeroDireccion">
+                    <br>
+                    <input type="text" class="form-control" placeholder="Complemento" ng-model="datosLaborales.complemento">
+                    <br>
+                    <input type="text" class="form-control" placeholder="Código Postal" ng-model="datosLaborales.codPostal">
+                    <br>
+                    <textarea class="form-control" ng-model="datosLaborales.descripcion"/>
+                    <br>
+                    <br>
+                    <button type="button" class="btn btn-success" ng-click="addDatosLaborales()">Guardar</button>
+                </tab>
+
+                <tab heading="Experiencia">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12" ng-repeat="expe in experiencia">
+                            <div class="thumbnail">
+                                <button class="btn btn-danger glyphicon glyphicon-minus" style="float: right"></button>
+                                <h3>{{expe.empresa}}
+                                    <small>{{expe.cargo}}</small>
+                                </h3>
+                                <em>{{expe.fechaDesde}} - {{expe.fechaHasta}}</em>
+
+                                <P class="lead">{{expe.descripcion}}</P>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-fluid">
+                        <button type="button" class="btn btn-primary glyphicon glyphicon-plus"
+                                ng-click="isCollapsed = !isCollapsed"></button>
+                        <br/>
+
+                        <div collapse="miPerfil.isCollapsed" style="padding-top: 15px">
+                            <form>
+                                <input type="text" id="inputEmpresa" class="form-control" placeholder="Ingresa Empresa">
+                                <br>
+
+                                <div class="form-inline">
+                                    <label>Fecha de ingreso</label>
+                                    <input type="date" id="fechaDesde" class="form-control" placeholder="Fecha">
+                                    <label>Fecha de salida</label>
+                                    <input type="date" id="fechaDes" class="form-control" placeholder="Fecha">
+                                </div>
+                                <br>
+                                <input type="text" placeholder="Cargo" class="form-control">
+                                <br>
+                                <textarea class="form-control" rows="3" placeholder="Descripción ..."></textarea>
+                                <br>
+                                <button class="btn btn-success" style="float: right">Agregar Experiencia</button>
+                            </form>
+                        </div>
+                    </div>
+
+                </tab>
+
+                <tab heading="Redes Sociales">
+                    <div class="col-sm-12 col-md-12">
+                        <br>
+
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-twitter"></i></span>
+                            <input class="form-control" placeholder="Twitter">
+                        </div>
+                        <br>
+
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-facebook"></i></span>
+                            <input class="form-control" placeholder="Facebook">
+                        </div>
+                        <br>
+
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-linkedin"></i></span>
+                            <input class="form-control" placeholder="Linkedin">
+                        </div>
+                        <br>
+
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-expand"></i></span>
+                            <input class="form-control" placeholder="Youtube">
+                        </div>
+                        <br>
+
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-send"></i></span>
+                            <input class="form-control" placeholder="Tu sitio web">
+                        </div>
+                    </div>
+                </tab>
+                <tab heading="Evaluaciones">
+                    <div class="col-sm-12 col-md-12">
+
+                        <div class="col-sm-3 col-md-3">
+                            <a class="thumbnail" style="width: 171px; height: 180px">
+                                <img src="images/juanito.jpg">
+                            </a>
+
+                            <h3>Juan Poblete <br>
+                                <small>Análista de sistemas</small>
+                            </h3>
+                        </div>
+                        <div class="col-sm-9 col-md-9">
+                            <rating ng-model="miPerfil.rate" max="5" readonly="false"></rating>
+                            <p class="lead">
+                                Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et
+                                magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies
+                                vehicula.
+
+                                Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                                Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus,
+                                nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non
+                                metus auctor fringilla.
+
+                                Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi
+                                porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor
+                                ligula, eget lacinia odio sem nec elit.
+                            </p>
+                            <h4>Detalles</h4>
+                            <em>19 Agosto del 2010 - 24 Agosto del 2010</em>
+
+                            <p>Valor del servicio $ 25.000</p>
+                        </div>
+
+                    </div>
+                </tab>
+                <tab heading="Mis Empresas">
+                    <div class="col-sm-12 col-md-12">
+
+                        <div class="col-sm-3 col-md-3">
+                            <a class="thumbnail" style="width: 171px; height: 180px">
+                                <img src="images/bch.png">
+                            </a>
+
+                            <h3>Banco de Chile<br>
+                                <small>Análista de sistemas</small>
+                            </h3>
+                        </div>
+                        <div class="col-sm-9 col-md-9">
+                            <rating ng-model="miPerfil.rate" max="5" readonly="false"></rating>
+                            <p class="lead">
+                                Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et
+                                magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies
+                                vehicula.
+
+                                Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                                Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus,
+                                nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non
+                                metus auctor fringilla.
+
+                                Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi
+                                porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor
+                                ligula, eget lacinia odio sem nec elit.
+                            </p>
+                            <h3>Integrantes</h3>
+                            <link class="-link">Juan Osbaldo</link>
+                            <br>
+                            <link>Jorge Orellana</link>
+                        </div>
+
+                    </div>
+                </tab>
+
+
+            </tabset>
+
+
+        </div>
+    </form>
+</section>

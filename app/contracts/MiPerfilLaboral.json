@@ -1,0 +1,20 @@
+{
+  "correoLaboral" : "clau.diazcubillos@gmail.com",
+  "codigoPais": "02",
+  "codigoArea": "2",
+  "numeroTelefono" : 3456789,
+  "direccionPersonal" : "Los sauces",
+  "pais": "Chile",
+  "cuidad": "Santiago",
+  "comuna": "La florida",
+  "numeroDireccionPersonal" : 345,
+  "complemento" : "Depto 958",
+  "codigoPostal": 654,
+  "habilidades": [
+    {
+      "Nombre": "Electrisista"
+    },
+    {
+      "nombre": "Mecanica Avanzada"
+    }]
+}

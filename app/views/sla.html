@@ -1,0 +1,17 @@
+<section class="container-fluid">
+    <div class="modal-header">
+        <h2>Estimado tiene una evaluación pendiente</h2>
+    </div>
+
+    <div class="modal-body" ng-hide="sla.bodyNotice">
+        <button class="btn btn-success center-block" ng-click="sla.aceptar()">Aceptar</button>
+    </div>
+
+    <div class="modal-body" ng-hide="sla.bodyAccept">
+        <div class="container" ng-repeat="lista in sla.listas">
+            <h3>{{lista.nombre}} <small>{{lista.descripcion}}</small></h3>
+            <rating ng-model="sla.range" max="5" readonly="false"></rating>
+        </div>
+        <button class="btn btn-success">Evaluar</button>
+    </div>
+</section>

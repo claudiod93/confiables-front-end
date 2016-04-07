@@ -1,0 +1,204 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap-social/bootstrap-social.css" />
+    <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="bower_components/AngularJS-Toaster/toaster.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+</head>
+<body ng-app="reliableApp" ng-controller="AppCtrl">
+<!--[if lte IE 8]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<!-- Add your site or application content here -->
+<div ng-show="isLoggedIn">
+    <div class="header">
+        <nav class="navbar navbar-default navbar-inverse navbar-static-top" role="navigation" ng-app="reliableApp"
+             ng-controller="headerCtrl">
+            <div class="container-fluid">
+                <div class="navbar-header">
+
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#js-navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <a class="navbar-brand" href="#/">
+                        <img alt="Brand" class="logo" src="images/confiables-logo.jpg">
+                    </a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="js-navbar-collapse">
+
+
+                    <form action="" class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <input type="text" typeahead="tipo for tipo in tipos | filter:$viewValue | limitTo:8"
+                                   ng-model="selectedComunas" class="form-control" placeholder="Buscar">
+                            <input type="text" typeahead="comuna for comuna in comunas | filter:$viewValue | limitTo:8"
+                                   ng-model="selectedTipo" class="form-control" placeholder="Especialidad">
+                            <a class="glyphicon glyphicon-search btn btn-primary" ng-click="search()"></a>
+                            <a role="button" href="#/busquedaAvanzada" class="btn btn-link">Búsuqeda Avanzada</a>
+                        </div>
+                    </form>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a><img src="../images/claudio_perfil.jpg" class="avatar-menu"></a>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                               aria-expanded="false">{{userHeader}} <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#/miPerfil">Mi Perfil</a></li>
+                                <li><a href="#/contratados">Contratados</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="" ng-click="logout()">Salir</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </nav>
+    </div>
+
+    <div ng-view=""></div>
+    <!--<div class="container">
+    </div>-->
+    <div style="clear: both"></div>
+    <div class="footer">
+        <div class="container">
+            <p></span>confiables.cl</p>
+        </div>
+    </div>
+</div>
+
+<div class="container" ng-hide="isLoggedIn">
+    <form action="" method="" class="form-group">
+        <div ng-hide="registerUserMode">
+            <label for="iemail">Nombre de Usuario</label>
+            <input id="iemail" class="form-control" name="user" type="text" placeholder="username" ng-model="userCredentials.username">
+            <label for="pass">Contraseña</label>
+            <input id="pass" class="form-control" type="password" placeholder="password" ng-model="userCredentials.password">
+        </div>
+
+        <div ng-show="registerUserMode" class="container">
+            <h3>Registrate</h3>
+            <label for="idEmailR">Email</label>
+            <input id="idEmailR" type="email" placeholder="email" ng-model="registerData.mail" class="form-control">
+            <label for="idNombreR">Nombre de Usuario</label>
+            <input id="idNombreR" type="text" placeholder="Nombre de Usuario" ng-model="registerData.nombreUsuario" class="form-control">
+            <label for="idPassR">Contraeña</label>
+            <input id="idPassR" type="password" placeholder="Contraseña" ng-model="registerData.contrasena" class="form-control">
+            <label for="idPrimerNombreR">Primer Nombre</label>
+            <input id="idPrimerNombreR" type="text" placeholder="Primer Nombre" ng-model="registerData.nombres" class="form-control">
+            <label for="idSegundoNombreR">Segundo Nombre</label>
+            <input id="idSegundoNombreR" type="text" placeholder="Segundo Nombre" ng-model="registerData.apellidos" class="form-control">
+            <label for="idSelectGeneroR">Genero</label>
+            <select id="idSelectGeneroR" class="dropdown-menu" aria-labelledby="dropdownMenu" ng-model="registerData.genero" class="form-control">
+                <option value="1">Masculino</option>
+                <option value="2">Femenino</option>
+            </select>
+           <label for="idFechaNacimientoR">Fecha Nacimiento</label>
+           <input id="idFechaNacimientoR" type="date" class="form-control" ng-model="registerData.fechaNacimiento">
+            <br>
+
+            <button class="btn btn-info btn-block register" ng-click="doRegister()">Register</button>
+        </div>
+        <div ng-hide="registerUserMode">
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="button" class="btn btn-default" ng-click="doLogin()">Sign in</button>
+                </div>
+            </div>
+        </div>
+        <span ng-click="showRegistrationForm()">Register for new Account</span>
+    </form>
+</div>
+
+
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+<script>
+    !function (A, n, g, u, l, a, r) {
+        A.GoogleAnalyticsObject = l, A[l] = A[l] || function () {
+                    (A[l].q = A[l].q || []).push(arguments)
+                }, A[l].l = +new Date, a = n.createElement(g),
+                r = n.getElementsByTagName(g)[0], a.src = u, r.parentNode.insertBefore(a, r)
+    }(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-XXXXX-X');
+    ga('send', 'pageview');
+</script>
+
+<!-- build:js(.) scripts/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-aria/angular-aria.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-messages/angular-messages.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-touch/angular-touch.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="bower_components/angular-google-maps-native/dist/angular-google-maps-native.min.js"></script>
+<script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+<script src="bower_components/typeahead.js/dist/typeahead.bundle.js"></script>
+<script src="bower_components/AngularJS-Toaster/toaster.js"></script>
+<script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js({.tmp,app}) scripts/scripts.js -->
+<script src="scripts/app.js"></script>
+
+<!-- Controllers -->
+<script src="scripts/controllers/main.js"></script>
+<script src="scripts/controllers/about.js"></script>
+<script src="scripts/controllers/miperfil.js"></script>
+<script src="scripts/controllers/search.js"></script>
+<script src="scripts/controllers/maps.js"></script>
+<script src="scripts/controllers/header.js"></script>
+<script src="scripts/controllers/perfiltrabajador.js"></script>
+<script src="scripts/controllers/contratomodal.js"></script>
+<script src="scripts/controllers/contratados.js"></script>
+<script src="scripts/controllers/sla.js"></script>
+<script src="scripts/controllers/busquedaavanzada.js"></script>
+<!-- Controllers -->
+
+<!-- Factories -->
+<script src="scripts/factories/miPerfilFactory.js"></script>
+<script src="scripts/factories/slaFactory.js"></script>
+<script src="scripts/factories/bestServicesFactory.js"></script>
+<script src="scripts/factories/categoriaFactory.js"></script>
+<script src="scripts/factories/comunaFactory.js"></script>
+<script src="scripts/factories/contratosFactory.js"></script>
+<!-- Factories -->
+
+<script src="scripts/controllers/app.js"></script>
+<script src="scripts/services/UserService.js"></script>
+<script src="scripts/controllers/profile-views.js"></script>
+<!-- endbuild -->
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "nombre" : "Claudio Antonio Díaz Cubillos",
+  "foto" : "../images/claudio_perfil.jpg",
+  "correoPersonal" : "clau.diazcubillos@gmail.com",
+  "codigoPais": "02",
+  "codigoArea": "2",
+  "numeroTelefonoPersonal" : 3456789,
+  "direccionPersonal" : "Los sauces",
+  "pais": "Chile",
+  "cuidad": "Santiago",
+  "comuna": "La florida",
+  "numeroDireccionPersonal" : 345,
+  "complemento" : "Depto 958",
+  "codigoPostal": 654
+}

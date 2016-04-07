@@ -1,0 +1,49 @@
+<section class="hero">
+  <div class="container text-center">
+    <h2 class="hero-title">Busca asombrosos servicios</h2>
+    <p class="hero-description hidden-xs">Elige los servicios más confiables</p>
+    <div class="row hero-search-box">
+      <form style="display: block; margin-top: 0em">
+        <div class="col-md-4 col-sm-4 search-input">
+          <input type="text" class="form-control input-lg search-first" placeholder="Servicios">
+        </div>
+        <div class="col-md-4 col-sm-4 search-input">
+          <select class="form-control input-lg search-second">
+            <option selected="">All Location</option>
+            <option>New York</option>
+            <option>Washington</option>
+            <option>California</option>
+          </select>
+        </div>
+        <div class="col-md-4 col-sm-4 search-input">
+          <a role="button" class="btn btn-primary btn-custom btn-block btn-lg">Buscar</a>
+        </div>
+       <!-- <div class="col-md-4 col-sm-4 search-input">
+          <button class="btn btn-custom btn-block btn-lg"><i class="fa fa-search"></i></button>
+        </div> -->
+      </form>
+    </div>
+  </div>
+</section>
+
+<div class="container-fluid">
+  <h1 class="center-block" style="border-radius: 10px" align="center">Los mejor evaluados</h1>
+</div>
+
+<br>
+
+<div class="container-fluid row">
+  <div class="col-sm-6 col-md-3" ng-repeat="block in main.contenido">
+    <div class="thumbnail" style="height: 450px">
+      <h4 class="center-block" style="border-radius: 10px" align="center">{{block.category}}</h4>
+      <a class="img-circle thumbnail">
+        <img class="img-circle" style="width: 140px; height: 140px" ng-src="{{block.image}}">
+      </a>
+      <blockquote>
+        <p>{{block.summary}}</p>
+        <footer>{{block.name}}</footer>
+      </blockquote>
+      <button class="btn btn-default" ng-click="main.alerta()">Contactar</button>
+    </div>
+  </div>
+</div>

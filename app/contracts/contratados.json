@@ -1,0 +1,36 @@
+{
+  "contratados": [
+    {
+      "id": "1",
+      "contrato": "test",
+      "prestador": "test",
+      "nombre": "test",
+      "descripcion": "test",
+      "fechaini": "12/12/2014",
+      "fechafin": "12/12/2015",
+      "Clausulatermino": "test",
+      "evaluacion": "3",
+      "valorServicio": "5000",
+      "comision": "500",
+      "Usuario": "1",
+      "pendiente": "1",
+      "aceptado": "0"
+    },
+    {
+      "id": "1",
+      "contrato": "test",
+      "prestador": "test",
+      "nombre": "test",
+      "descripcion": "test",
+      "fechaini": "12/12/2014",
+      "fechafin": "12/12/2015",
+      "Clausulatermino": "test",
+      "evaluacion": "3",
+      "valorServicio": "5000",
+      "comision": "500",
+      "Usuario": "1",
+      "pendiente": "0",
+      "aceptado": "1"
+    }
+  ]
+}
